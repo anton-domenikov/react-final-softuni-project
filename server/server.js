@@ -9,6 +9,7 @@ const app = express();
 require('./config/mongoose');
 require('./config/express')(app);
 
+app.use(express.json());
 app.use(cors());
 app.use(routes);
 app.use(errorHandler);

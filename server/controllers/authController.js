@@ -28,19 +28,21 @@ router.get('/register', (req, res) => {
 });
 
 router.post('/register',
-    body('username', 'Username cannot be empty').notEmpty(),
-    body('username', 'Username should be at least 4 characters').isLength({min: 4}),
-    body('password', 'Password should be at least 4 characters').isLength({min: 4}),
+    // body('username', 'Username cannot be empty').notEmpty(),
+    // body('username', 'Username should be at least 4 characters').isLength({min: 4}),
+    // body('password', 'Password should be at least 4 characters').isLength({min: 4}),
     (req, res) => {
+        console.log(req.body);
         const {username, password} = req.body;
 
+
         // validations start
-        let errors = validationResult(req).array();
-        if (errors.length > 0) {
-            let error = errors[0];
-            error.message = error.msg;
-            return res.render('register', {error});
-        }
+        // let errors = validationResult(req).array();
+        // if (errors.length > 0) {
+        //     let error = errors[0];
+        //     error.message = error.msg;
+        //     return res.render('register', {error});
+        // }
 
         // if (amount < 0) {
         //     res.render('register', {error: { message: "Amount cannot be a negative number!" }});
@@ -55,20 +57,22 @@ router.post('/register',
         
 
         authService.register(username, password)
-            .then(createdUser => {
-                authService.login(username, password)
-                    .then(token => {
-                        res.cookie(COOKIE_NAME, token, { httpOnly: true });
-                        res.redirect('/');
-                    })
-                    .catch(error => {
-                        console.log(error);
-                        res.render('login', {error});
-                    });
+            .then(data => {
+                res.json(data)
+                // authService.login(username, password)
+                //     .then(token => {
+                //         res.cookie(COOKIE_NAME, token, { httpOnly: true });
+                //         res.redirect('/');
+                //     })
+                //     .catch(error => {
+                //         console.log(error);
+                //         res.render('login', {error});
+                //     });
             })
             .catch(error => {
                 console.log(error);
-                res.render('register', {error});
+                // res.render('register', {error});
+                res.send(error)
             });
     }
 );

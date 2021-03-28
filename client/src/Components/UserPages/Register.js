@@ -14,24 +14,21 @@ class Register extends Component {
 
     onSubmitHandler(e) {
         e.preventDefault();
-        console.log(e.target.username);
-        console.log(e.target.username.value);
-        console.log(e.target.username.name);
-        console.log(e.target.username.id);
-
-        console.log(this.state);
 
         const registered = {
             username: this.state.username,
             password: this.state.password,
         }
 
-        console.log(registered);
+        console.log('registered', registered);
 
-        fetch(
-            'http://localhost:4040/auth/register', 
+        fetch('http://localhost:4040/auth/register', 
             {
-                method: 'post',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                method: 'POST',
                 body: JSON.stringify(registered)
             })
             .then(res => console.log(res.data))
