@@ -2,12 +2,14 @@ const express = require('express');
 const routes = require('./routes')
 const { PORT } = require('./config/config');
 const errorHandler = require('./middlewares/errorHandler');
+const cors = require('cors');
 
 const app = express();
 
 require('./config/mongoose');
 require('./config/express')(app);
 
+app.use(cors());
 app.use(routes);
 app.use(errorHandler);
 

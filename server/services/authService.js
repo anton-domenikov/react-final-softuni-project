@@ -3,12 +3,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { SECRET } = require('../config/config');
 
-const register = (username, password, amount) => {
-    if (amount == '') {
-        amount = 0;
-    }
-
-    let user = new User({ username, password, amount });
+const register = (username, password) => {
+    let user = new User({ username, password });
 
     return user.save();
 }

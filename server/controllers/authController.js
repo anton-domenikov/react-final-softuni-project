@@ -32,7 +32,7 @@ router.post('/register',
     body('username', 'Username should be at least 4 characters').isLength({min: 4}),
     body('password', 'Password should be at least 4 characters').isLength({min: 4}),
     (req, res) => {
-        const {username, password, amount, rePassword} = req.body;
+        const {username, password} = req.body;
 
         // validations start
         let errors = validationResult(req).array();
@@ -42,19 +42,19 @@ router.post('/register',
             return res.render('register', {error});
         }
 
-        if (amount < 0) {
-            res.render('register', {error: { message: "Amount cannot be a negative number!" }});
-            return;
-        }
+        // if (amount < 0) {
+        //     res.render('register', {error: { message: "Amount cannot be a negative number!" }});
+        //     return;
+        // }
 
-        if (password !== rePassword) {
-            res.render('register', {error: { message: "Passwords don't match!" }});
-            return;
-        }
+        // if (password !== rePassword) {
+        //     res.render('register', {error: { message: "Passwords don't match!" }});
+        //     return;
+        // }
         // validations end
         
 
-        authService.register(username, password, amount)
+        authService.register(username, password)
             .then(createdUser => {
                 authService.login(username, password)
                     .then(token => {

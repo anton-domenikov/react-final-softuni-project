@@ -6,6 +6,7 @@ class Register extends Component {
 
         this.state = {
             username: '',
+            password: '',
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -17,6 +18,23 @@ class Register extends Component {
         console.log(e.target.username.value);
         console.log(e.target.username.name);
         console.log(e.target.username.id);
+
+        console.log(this.state);
+
+        const registered = {
+            username: this.state.username,
+            password: this.state.password,
+        }
+
+        console.log(registered);
+
+        fetch(
+            'http://localhost:4040/auth/register', 
+            {
+                method: 'post',
+                body: JSON.stringify(registered)
+            })
+            .then(res => console.log(res.data))
     }
 
     // onUsernameChangeHandler(e) {
@@ -36,11 +54,8 @@ class Register extends Component {
         return (
             <div>
                 <h1>Demo Form baby</h1>
-                <form action="">
-                    <input type="text"/>
-                </form>
     
-                <form onSubmit={this.onSubmitHandler} >
+                <form onSubmit={this.onSubmitHandler.bind(this)} >
                     <label htmlFor="username">Username</label>
                     <input 
                         type="text" 
@@ -49,13 +64,13 @@ class Register extends Component {
                         value={this.state.username} 
                         onChange={this.onChangeHandler} 
                     />
-                    <label htmlFor="age">Age</label>
+                    <label htmlFor="password">Password</label>
                     <input 
                         type="password" 
                         id="password" 
                         name="password" 
-                        // value={this.state.age}
-                        // onChange={this.onChangeHandler}
+                        value={this.state.password}
+                        onChange={this.onChangeHandler}
                     />
                     <input type="submit" value="Send"/>
                     <button>Click Me!</button>
