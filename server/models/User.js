@@ -15,15 +15,6 @@ const userSchema = new mongoose.Schema({
         required: [true, 'password cannot be empty'],
         trim: true,
     },
-    amount: {
-        type: Number,
-        required: true,
-        default: 0,
-    },
-    expenses: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'Expense',
-    }]
 });
 
 userSchema.pre('save', function(next) {

@@ -11,8 +11,6 @@ router.use('/', homeController);
 router.use('/auth', authController);
 router.use('/expense', expenseController);
 
-router.get('*', (req, res) => {
-    res.render('404', {title: 'Page Not Found'});
-});
+
 
 module.exports = router;
