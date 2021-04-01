@@ -59,6 +59,7 @@ router.post('/register',
 
         authService.register(username, password)
             .then(data => {
+                console.log(data);
                 res.json(data)
             })
             .catch(error => {

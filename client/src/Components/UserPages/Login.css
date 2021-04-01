@@ -1,4 +1,4 @@
-#register {
+#login {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,7 +7,7 @@
     background-position: 100%;
 }
 
-.register-form {
+.login-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,24 +19,24 @@
     border-radius: 5px;
 }
 
-.register-form label {
+.login-form label {
     margin: 10px 0;
 }
 
-.register-form h1 {
+.login-form h1 {
     margin-bottom: 30px;
     font-size: 40px;
     padding: 10px 50px;
 }
 
-#register form {
+#login form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-#register input[type="text"],
-#register input[type="password"] {
+#login input[type="text"],
+#login input[type="password"] {
     font-size: 18px;
     padding: 11px 20px;
     outline: none;
@@ -46,7 +46,7 @@
     width: 300px;
 }
 
-#register button {
+#login button {
     font-size: 18px;
     padding: 12px 10px;
     border: none;
@@ -55,6 +55,6 @@
     margin-top: 30px;
 }
 
-#register button:hover {
+#login button:hover {
     cursor: pointer;
 }

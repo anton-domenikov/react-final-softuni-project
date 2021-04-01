@@ -1,14 +1,13 @@
 import { Component } from 'react';
-import './Register.css'
+import './Login.css'
 
-class Register extends Component {
+class Login extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             username: '',
             password: '',
-            rePassword: '',
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -17,34 +16,24 @@ class Register extends Component {
     onSubmitHandler(e) {
         e.preventDefault();
 
-        const registered = {
+        const logged = {
             username: this.state.username,
             password: this.state.password,
-            rePassword: this.state.rePassword,
         }
 
-        console.log('registered', registered);
+        console.log('Logged', logged);
 
-        fetch('http://localhost:4040/auth/register',
+        fetch('http://localhost:4040/auth/login',
             {
                 headers: {
                     'Accept': 'application/json, text/plain, */*',
                     'Content-Type': 'application/json'
                 },
                 method: 'POST',
-                body: JSON.stringify(registered)
+                body: JSON.stringify(logged)
             })
             .then(res => console.log(res))
     }
-
-    // onUsernameChangeHandler(e) {
-    //     console.log(e.target.value);
-    //     this.setState({username: e.target.value});
-    // }
-
-    // onAgeChangeHandler(e) {
-    //     this.setState({age: e.target.value});
-    // }
 
     onChangeHandler(e) {
         this.setState({ [e.target.name]: e.target.value });
@@ -52,9 +41,9 @@ class Register extends Component {
 
     render() {
         return (
-            <section id="register">
-                <div className="register-form">
-                    <h1>Register</h1>
+            <section id="login">
+                <div className="login-form">
+                    <h1>Login</h1>
 
                     <form onSubmit={this.onSubmitHandler.bind(this)} >
                         <label htmlFor="username">Username</label>
@@ -74,14 +63,6 @@ class Register extends Component {
                             onChange={this.onChangeHandler}
                         />
 
-                        <label htmlFor="rePassword">Repeat Password</label>
-                        <input
-                            type="password"
-                            id="rePassword"
-                            name="rePassword"
-                            value={this.state.rePassword}
-                            onChange={this.onChangeHandler}
-                        />
                         <button>Submit</button>
                     </form>
                 </div>
@@ -91,4 +72,4 @@ class Register extends Component {
 }
 
 
-export default Register;
+export default Login;
