@@ -15,6 +15,7 @@ router.post('/login', async (req, res) => {
     try {
         let token = await authService.login(username, password);
         res.cookie(COOKIE_NAME, token, { httpOnly: true });
+        return res.json({token: token, message: 'you have logged in successfully'});
         res.redirect('/');
     } catch (error) {
         res.render('login', {error});
@@ -59,19 +60,9 @@ router.post('/register',
         authService.register(username, password)
             .then(data => {
                 res.json(data)
-                // authService.login(username, password)
-                //     .then(token => {
-                //         res.cookie(COOKIE_NAME, token, { httpOnly: true });
-                //         res.redirect('/');
-                //     })
-                //     .catch(error => {
-                //         console.log(error);
-                //         res.render('login', {error});
-                //     });
             })
             .catch(error => {
                 console.log(error);
-                // res.render('register', {error});
                 res.send(error)
             });
     }

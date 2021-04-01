@@ -1,4 +1,5 @@
-import {Component} from 'react';
+import { Component } from 'react';
+import './Register.css'
 
 class Register extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ class Register extends Component {
 
         console.log('registered', registered);
 
-        fetch('http://localhost:4040/auth/register', 
+        fetch('http://localhost:4040/auth/register',
             {
                 headers: {
                     'Accept': 'application/json, text/plain, */*',
@@ -44,35 +45,37 @@ class Register extends Component {
     // }
 
     onChangeHandler(e) {
-        this.setState({[e.target.name]: e.target.value});
+        this.setState({ [e.target.name]: e.target.value });
     }
 
-    render () {
+    render() {
         return (
-            <div>
-                <h1>Demo Form baby</h1>
-    
-                <form onSubmit={this.onSubmitHandler.bind(this)} >
-                    <label htmlFor="username">Username</label>
-                    <input 
-                        type="text" 
-                        id="username" 
-                        name="username" 
-                        value={this.state.username} 
-                        onChange={this.onChangeHandler} 
-                    />
-                    <label htmlFor="password">Password</label>
-                    <input 
-                        type="password" 
-                        id="password" 
-                        name="password" 
-                        value={this.state.password}
-                        onChange={this.onChangeHandler}
-                    />
-                    <input type="submit" value="Send"/>
-                    <button>Click Me!</button>
-                </form>
-            </div>
+            <section id="register">
+                <div className="register-form">
+                    <h1>Register</h1>
+
+                    <form onSubmit={this.onSubmitHandler.bind(this)} >
+                        <label htmlFor="username">Username</label>
+                        <input
+                            type="text"
+                            id="username"
+                            name="username"
+                            value={this.state.username}
+                            onChange={this.onChangeHandler}
+                        />
+                        <label htmlFor="password">Password</label>
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            value={this.state.password}
+                            onChange={this.onChangeHandler}
+                        />
+                        <input type="submit" value="Send" />
+                        <button>Click Me!</button>
+                    </form>
+                </div>
+            </section>
         );
     }
 }
