@@ -1,9 +1,10 @@
 import './Create.css'
 
-const Create = () => {
+const Create = ({history}) => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
+        console.log(history);
 
         const motorcycle = {
             model: e.target.model.value,
@@ -21,7 +22,8 @@ const Create = () => {
                 method: 'POST',
                 body: JSON.stringify(motorcycle)
             })
-            .then(res => console.log(res))
+            .then((res) => console.log(res))
+            .then(() => history.push('/'))
     }
 
 

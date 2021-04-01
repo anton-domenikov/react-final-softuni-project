@@ -18,9 +18,7 @@ const getUser = (id) => {
 const getOne = (id) => Motorcycle.findById(id);
 
 const create = async (motorcycleData) => {
-    console.log(motorcycleData);
     let motorcycle = new Motorcycle(motorcycleData);
-    console.log(motorcycle);
 
     return motorcycle.save();
 };

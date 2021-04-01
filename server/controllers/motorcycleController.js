@@ -20,7 +20,6 @@ router.get('/create', (req, res) => {
 
 router.post('/create', (req, res, next) => {
     let motorcycleData = extractMotorcycleData(req);
-    console.log(req);
 
     // validation start
     // if (motorcycleData.merchant.length < 4) {
@@ -51,7 +50,7 @@ router.post('/create', (req, res, next) => {
 
     motorcycleService.create(motorcycleData)
         .then(createdMotorcycle => {
-            res.redirect('/');
+            res.send(createdMotorcycle)
         })
         .catch(next)
 
