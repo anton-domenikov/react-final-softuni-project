@@ -3,15 +3,14 @@ const isAuth = require('../middlewares/isAuth');
 const motorcycleService = require('../services/motorcycleService');
 
 router.get('/', (req, res, next) => {
-    if (req.user) {
-        motorcycleService.getAll(req.user._id)
-            .then(motorcycles => {
-                res.render('home', { motorcycles });
-            })
-            .catch(next);
-    } else {
-        res.render('home');
-    }
+
+    motorcycleService.getAll()
+        .then(motorcycles => {
+            return motorcycles
+            // res.render('home', { motorcycles });
+        })
+        .catch(next);
+
 });
 
 router.get('/profile', isAuth, (req, res, next) => {
@@ -26,7 +25,7 @@ router.get('/profile', isAuth, (req, res, next) => {
 
             let amountLeftOfUser = user.amount - amountOfmotorcycles;
 
-            res.render('profile', {username: user.username, amountOfmotorcycles, totalMerchants, amountLeftOfUser});
+            res.render('profile', { username: user.username, amountOfmotorcycles, totalMerchants, amountLeftOfUser });
         })
         .catch(next)
 });

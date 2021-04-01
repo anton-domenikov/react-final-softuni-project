@@ -1,12 +1,12 @@
 const User = require('../models/User');
 const Motorcycle = require('../models/Motorcycle');
 
-const getAll = async (userId) => {
+const getAll = async () => {
     let result = await Motorcycle.find({}).lean()
 
-    if (result) {
-        result = result.filter(x => x.creator == userId);
-    };
+    // if (result) {
+    //     result = result.filter(x => x.creator == userId);
+    // };
 
     return result;
 };

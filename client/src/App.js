@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import { Register, Login } from './Components/UserPages';
 import { Header } from './Components/Common';
-import { Create } from './Components/MotorcyclePages';
+import { Dashboard, Create } from './Components/MotorcyclePages';
 
 function App() {
     return (
@@ -11,9 +11,10 @@ function App() {
             <Header></Header>
 
             <Switch>
+                <Route path="/" exact component={Dashboard} ></Route>
                 <Route path="/register" component={Register} ></Route>
                 <Route path="/login" component={Login} ></Route>
-                <Route path="/bikes/create" component={Create} ></Route>
+                <Route path="/motorcycles/create" component={Create} ></Route>
             </Switch>
         </div>
     );

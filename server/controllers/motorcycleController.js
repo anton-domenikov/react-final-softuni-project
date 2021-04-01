@@ -2,49 +2,17 @@ const router = require('express').Router();
 const motorcycleService = require('../services/motorcycleService');
 const { body, validationResult } = require('express-validator');
 
-const allowedCategories = [
-    'Advertising',
-    'Benefits',
-    'Car',
-    'Equipment',
-    'Fees',
-    'Home Office',
-    'Insurance',
-    'Interest',
-    'Labor',
-    'Maintenance',
-    'Materials',
-    'Meals and Entertainment',
-    'Office Supplies',
-    'Other',
-    'Professional Services',
-    'Rent',
-    'Taxes',
-    'Travel',
-    'Utilities'
-];
 
-const allowedCategoriesTwo = [
-    'advertising',
-    'benefits',
-    'car',
-    'equipment',
-    'fees',
-    'home-office',
-    'insurance',
-    'interest',
-    'labor',
-    'maintenance',
-    'materials',
-    'meals-and-entertainment',
-    'office-supplies',
-    'other',
-    'professional-services',
-    'rent',
-    'taxes',
-    'travel',
-    'utilities'
-];
+
+router.get('/', (req, res, next) => {
+
+    motorcycleService.getAll()
+        .then(motorcycles => {
+            return res.send(motorcycles);
+        })
+        .catch(next);
+
+});
 
 router.get('/create', (req, res) => {
     res.render('createMotorcycle');
