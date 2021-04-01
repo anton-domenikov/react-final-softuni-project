@@ -34,7 +34,7 @@ router.post('/register',
     // body('password', 'Password should be at least 4 characters').isLength({min: 4}),
     (req, res) => {
         console.log(req.body);
-        const {username, password} = req.body;
+        const {username, password, rePassword} = req.body;
 
 
         // validations start
@@ -50,10 +50,10 @@ router.post('/register',
         //     return;
         // }
 
-        // if (password !== rePassword) {
-        //     res.render('register', {error: { message: "Passwords don't match!" }});
-        //     return;
-        // }
+        if (password !== rePassword) {
+            res.render('register', {error: { message: "Passwords don't match!" }});
+            return;
+        }
         // validations end
         
 

@@ -8,6 +8,7 @@ class Register extends Component {
         this.state = {
             username: '',
             password: '',
+            rePassword: '',
         }
 
         this.onChangeHandler = this.onChangeHandler.bind(this);
@@ -19,6 +20,7 @@ class Register extends Component {
         const registered = {
             username: this.state.username,
             password: this.state.password,
+            rePassword: this.state.rePassword,
         }
 
         console.log('registered', registered);
@@ -71,8 +73,16 @@ class Register extends Component {
                             value={this.state.password}
                             onChange={this.onChangeHandler}
                         />
-                        <input type="submit" value="Send" />
-                        <button>Click Me!</button>
+
+                        <label htmlFor="rePassword">Repeat Password</label>
+                        <input
+                            type="password"
+                            id="rePassword"
+                            name="rePassword"
+                            value={this.state.rePassword}
+                            onChange={this.onChangeHandler}
+                        />
+                        <button>Submit</button>
                     </form>
                 </div>
             </section>
