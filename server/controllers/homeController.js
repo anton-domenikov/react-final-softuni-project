@@ -1,12 +1,12 @@
 const router = require('express').Router();
 const isAuth = require('../middlewares/isAuth');
-const expenseService = require('../services/expenseService');
+const motorcycleService = require('../services/motorcycleService');
 
 router.get('/', (req, res, next) => {
     if (req.user) {
-        expenseService.getAll(req.user._id)
-            .then(expenses => {
-                res.render('home', { expenses });
+        motorcycleService.getAll(req.user._id)
+            .then(motorcycles => {
+                res.render('home', { motorcycles });
             })
             .catch(next);
     } else {
@@ -15,18 +15,18 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/profile', isAuth, (req, res, next) => {
-    expenseService.getUser(req.user._id)
+    motorcycleService.getUser(req.user._id)
         .then(user => {
 
-            let amountOfExpenses = 0;
-            let totalMerchants = user.expenses.length;
-            user.expenses.forEach((expense) => {
-                amountOfExpenses += Number(expense.total);
+            let amountOfmotorcycles = 0;
+            let totalMerchants = user.motorcycles.length;
+            user.motorcycles.forEach((motorcycle) => {
+                amountOfmotorcycles += Number(motorcycle.total);
             });
 
-            let amountLeftOfUser = user.amount - amountOfExpenses;
+            let amountLeftOfUser = user.amount - amountOfmotorcycles;
 
-            res.render('profile', {username: user.username, amountOfExpenses, totalMerchants, amountLeftOfUser});
+            res.render('profile', {username: user.username, amountOfmotorcycles, totalMerchants, amountLeftOfUser});
         })
         .catch(next)
 });

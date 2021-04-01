@@ -35,8 +35,7 @@
     justify-content: space-between;
 }
 
-#register input[type="text"],
-#register input[type="password"] {
+#register input {
     font-size: 18px;
     padding: 11px 20px;
     outline: none;

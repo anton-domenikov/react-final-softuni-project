@@ -1,4 +1,4 @@
-#login {
+#create {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -7,7 +7,7 @@
     background-position: 100%;
 }
 
-.login-form {
+.create-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,23 +19,24 @@
     border-radius: 5px;
 }
 
-.login-form label {
+.create-form label {
     margin: 10px 0;
 }
 
-.login-form h1 {
+.create-form h1 {
     margin-bottom: 30px;
     font-size: 40px;
     padding: 10px 50px;
 }
 
-#login form {
+#create form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-#login input {
+
+#create input {
     font-size: 18px;
     padding: 11px 20px;
     outline: none;
@@ -45,7 +46,7 @@
     width: 300px;
 }
 
-#login button {
+#create button {
     font-size: 18px;
     padding: 12px 10px;
     border: none;
@@ -54,6 +55,6 @@
     margin-top: 30px;
 }
 
-#login button:hover {
+#create button:hover {
     cursor: pointer;
 }
