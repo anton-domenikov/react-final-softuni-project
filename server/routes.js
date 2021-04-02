@@ -7,7 +7,6 @@ const motorcycleController = require('./controllers/motorcycleController');
 
 
 // use controllers
-router.use('/', homeController);
 router.use('/auth', authController);
 router.use('/motorcycle', motorcycleController);
 

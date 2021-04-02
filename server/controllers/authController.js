@@ -5,9 +5,6 @@ const { body, validationResult } = require('express-validator');
 
 
 // login with USERNAME
-router.get('/login', (req, res) => {
-    res.render('login');
-});
 
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
@@ -16,17 +13,12 @@ router.post('/login', async (req, res) => {
         let token = await authService.login(username, password);
         res.cookie(COOKIE_NAME, token, { httpOnly: true });
         return res.json({token: token, message: 'you have logged in successfully'});
-        res.redirect('/');
     } catch (error) {
-        res.render('login', {error});
+        res.send('login', {error});
     }
 
 });
 
-
-router.get('/register', (req, res) => {
-    res.render('register');
-});
 
 router.post('/register',
     // body('username', 'Username cannot be empty').notEmpty(),
@@ -42,16 +34,16 @@ router.post('/register',
         // if (errors.length > 0) {
         //     let error = errors[0];
         //     error.message = error.msg;
-        //     return res.render('register', {error});
+        //     return res.send('register', {error});
         // }
 
         // if (amount < 0) {
-        //     res.render('register', {error: { message: "Amount cannot be a negative number!" }});
+        //     res.send('register', {error: { message: "Amount cannot be a negative number!" }});
         //     return;
         // }
 
         if (password !== rePassword) {
-            res.render('register', {error: { message: "Passwords don't match!" }});
+            // res.send('register', {error: { message: "Passwords don't match!" }});
             return;
         }
         // validations end
@@ -71,7 +63,6 @@ router.post('/register',
 
 router.get('/logout', (req, res) => {
     res.clearCookie(COOKIE_NAME);
-    res.redirect('/');
 })
 
 module.exports = router;

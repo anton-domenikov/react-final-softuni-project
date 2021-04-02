@@ -14,9 +14,6 @@ router.get('/', (req, res, next) => {
 
 });
 
-router.get('/create', (req, res) => {
-    res.render('createMotorcycle');
-});
 
 router.post('/create', (req, res, next) => {
     let motorcycleData = extractMotorcycleData(req);
@@ -57,10 +54,10 @@ router.post('/create', (req, res, next) => {
 });
 
 
-router.get('/report/:motorcycleId', (req, res, next) => {
+router.get('/edit/:motorcycleId', (req, res, next) => {
     motorcycleService.getOne(req.params.motorcycleId)
         .then(motorcycle => {
-            res.render('report', motorcycle);
+            res.send(motorcycle);
         })
         .catch(next);
 });

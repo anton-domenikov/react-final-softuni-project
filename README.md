@@ -6,8 +6,6 @@ MongoDB, Expressjs, React/Redux, Nodejs
 </p>
 
 
-> MERN is a fullstack implementation in MongoDB, Expressjs, React/Redux, Nodejs.
-
 MERN stack is the idea of using Javascript/Node for fullstack web development.
 
 ## clone or download
@@ -25,7 +23,7 @@ $ git clone https://github.com/anton-domenikov/react-final-softuni-project
 
 
 
-## NOTICE ! - you need client and server runs concurrently in different terminal session, in order to make them talk to each other
+# Important ! - you need client and server runs concurrently in different terminal sessions, in order to make them talk to each other
 
 ## Client-side usage(PORT: 3000)
 ```terminal
