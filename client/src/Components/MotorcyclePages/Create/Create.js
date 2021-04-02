@@ -4,7 +4,6 @@ const Create = ({history}) => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        console.log(history);
 
         const motorcycle = {
             model: e.target.model.value,
