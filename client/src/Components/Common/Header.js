@@ -2,6 +2,19 @@ import { Link } from 'react-router-dom'
 import './Header.css'
 
 const Header = () => {
+    const onClickLogout = () => {
+        fetch('http://localhost:4040/auth/logout',
+            {
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json',
+                },
+                method: 'GET',
+                mode: 'cors',
+                credentials: 'include'
+            })
+    }
+
     return (
         <>
             <header id="header">
@@ -9,7 +22,7 @@ const Header = () => {
                 <h2>Welcome <span>profile!</span>!</h2>
                 <nav id="nav">
                     <ul>
-                        <li><Link to="/logout">Logout</Link></li>
+                        <li><Link onClick={onClickLogout} to="/logout">Logout</Link></li>
                     </ul>
                 </nav>
                 <nav id="nav">

@@ -10,7 +10,7 @@ require('./config/mongoose');
 require('./config/express')(app);
 
 // app.use(express.json());
-app.use(cors());
+app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(routes);
 app.use(errorHandler);
 

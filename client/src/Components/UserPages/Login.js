@@ -27,12 +27,19 @@ class Login extends Component {
             {
                 headers: {
                     'Accept': 'application/json, text/plain, */*',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
                 method: 'POST',
-                body: JSON.stringify(logged)
+                body: JSON.stringify(logged),
+                mode: 'cors',
+                credentials: 'include'
             })
-            .then(res => console.log(res))
+            .then((res) => {
+                return res.json()
+            })
+            .then(data => {
+                console.log(data);
+            })
     }
 
     onChangeHandler(e) {

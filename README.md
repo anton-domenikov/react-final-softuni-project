@@ -5,8 +5,9 @@
 MongoDB, Expressjs, React/Redux, Nodejs
 </p>
 
-
+<p align="center">
 MERN stack is the idea of using Javascript/Node for fullstack web development.
+</p>
 
 ## clone or download
 ```terminal
@@ -23,7 +24,7 @@ $ git clone https://github.com/anton-domenikov/react-final-softuni-project
 
 
 
-# Important ! - you need client and server runs concurrently in different terminal sessions, in order to make them talk to each other
+## **Important** - you need client and server runs concurrently in different terminal sessions, in order to make them talk to each other
 
 ## Client-side usage(PORT: 3000)
 ```terminal
@@ -40,7 +41,6 @@ You will also see any lint errors in the console.
 
 ## Server-side usage(PORT: 4040)
 
-### Prepare your secret
 
 ### Start
 

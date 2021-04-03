@@ -9,13 +9,20 @@ const { body, validationResult } = require('express-validator');
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
 
-    try {
-        let token = await authService.login(username, password);
-        res.cookie(COOKIE_NAME, token, { httpOnly: true });
-        return res.json({token: token, message: 'you have logged in successfully'});
-    } catch (error) {
-        res.send('login', {error});
-    }
+    // try {
+    //     let token = await authService.login(username, password);
+    //     res.cookie(COOKIE_NAME, token, { httpOnly: true });
+    //     res.send({token: token, message: 'you have logged in successfully'});
+    // } catch (error) {
+    //     res.send('login', {error});
+    // }
+
+    authService.login(username, password)
+        .then(token => {
+            res.cookie(COOKIE_NAME, token);
+            res.send({token: token, message: 'you have logged in successfully'});
+            // res.send({'login': true});
+        })
 
 });
 
@@ -63,6 +70,7 @@ router.post('/register',
 
 router.get('/logout', (req, res) => {
     res.clearCookie(COOKIE_NAME);
+    res.send();
 })
 
 module.exports = router;
