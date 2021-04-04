@@ -5,8 +5,6 @@ const MotorcycleCard = ({
     model,
     displacement,
     imageURL,
-    category,
-    likes,
 }) => {
 
     return (

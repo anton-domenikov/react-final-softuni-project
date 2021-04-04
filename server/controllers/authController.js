@@ -18,9 +18,9 @@ router.post('/login', async (req, res) => {
     // }
 
     authService.login(username, password)
-        .then(token => {
-            res.cookie(COOKIE_NAME, token);
-            res.send({token: token, message: 'you have logged in successfully'});
+        .then(data => {
+            res.cookie(COOKIE_NAME, data.token);
+            res.send({token: data.token, userId: data.user._id, message: 'you have logged in successfully'});
             // res.send({'login': true});
         })
 

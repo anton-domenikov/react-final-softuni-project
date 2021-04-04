@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import MotorcyclesCard from '../MotorcyclesCard/MotorcyclesCard';
+import MotorcyclesCard from '../MotorcyclesCards/MotorcyclesCard';
 import './Dashboard.css'
 
 const Dashboard = () => {

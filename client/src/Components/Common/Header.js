@@ -26,15 +26,18 @@ const Header = ({history}) => {
     }
 
     if (user) {
+        const currentUser = user[0];
         return (
             <>
                 <header id="header">
                     <h1>Suzuki</h1>
-                    <h2>Welcome <span>profile!</span>!</h2>
+                    <h2>Welcome <span>{currentUser}!</span>!</h2>
                     <nav id="nav">
                         <ul>
+                            <li><Link to="/">Home</Link></li>
                             <li><Link to="/motorcycles/create">Add Bike</Link></li>
-                            <li><Link onClick={onClickLogout} to="/logout">Logout {user}</Link></li>
+                            <li><Link to="/motorcycles/my-bikes">My Bikes</Link></li>
+                            <li><Link onClick={onClickLogout} to="/logout">Logout {currentUser}</Link></li>
                         </ul>
                     </nav>
                 </header>

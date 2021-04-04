@@ -33,7 +33,7 @@ const Login = ({history}) => {
                 return res.json()
             })
             .then(data => {
-                setUser(username);
+                setUser([username, data.userId]);
                 history.push('/')
                 console.log(data);
             })
@@ -47,7 +47,7 @@ const Login = ({history}) => {
     const onPasswordChangeHandler = (e) => {
         const passwordValue = e.target.value;
         setPassword(passwordValue);
-        console.log(password);
+        // console.log(password);
     }
 
 

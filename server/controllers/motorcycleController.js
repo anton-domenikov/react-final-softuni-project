@@ -14,10 +14,25 @@ router.get('/', (req, res, next) => {
 
 });
 
+// router.get('/my-bikes', (req, res, next) => {
+//     let username = req.body.user;
+
+//     motorcycleService.getMyBikes(username)
+//         .then(motorcycles => {
+//             return res.send(motorcycles);
+//         })
+//         .catch(next);
+
+// });
+
 
 router.post('/create', (req, res, next) => {
-    console.log(req.body);
+    // console.log(req.body);
     let motorcycleData = extractMotorcycleData(req);
+
+    let username = req.body.user;
+
+
 
     // validation start
     // if (motorcycleData.merchant.length < 4) {
@@ -46,7 +61,7 @@ router.post('/create', (req, res, next) => {
     // }
     // validation end
 
-    motorcycleService.create(motorcycleData)
+    motorcycleService.create(motorcycleData, username)
         .then(createdMotorcycle => {
             res.send(createdMotorcycle)
         })

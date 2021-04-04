@@ -1,0 +1,35 @@
+#my-bikes {
+    /* padding-top: 95px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.my-motorcycles {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+#my-bikes img {
+    display: block;
+    max-width: 300px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+  border-radius: 0.4rem;
+
+}
+
+.motorcycle-info button {
+    margin-right:  15px;
+}
+
+.motorcycle-info :nth-child(3) button  {
+    background: rgb(221, 94, 94);
+}
+
+.motorcycle-info :nth-child(3) button:hover {
+    background: rgb(233, 47, 47);
+    color: rgb(0, 0, 0);
+  }

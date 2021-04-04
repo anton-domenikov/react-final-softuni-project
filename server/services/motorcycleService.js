@@ -11,6 +11,18 @@ const getAll = async () => {
     return result;
 };
 
+const getMyBikes = async (username) => {
+    let result = await Motorcycle.find({}).lean()
+    let user = await User.findOne({username});
+    let userId = user._id;
+
+    if (result) {
+        result = result.filter(x => x.creator == userId);
+    };
+
+    return result;
+}
+
 const getUser = (id) => {
     return User.findById(id).populate('motorcycles');
 }
@@ -23,12 +35,19 @@ const getOne = (id) => Motorcycle.findById(id);
 //     return motorcycle.save();
 // };
 
-const create = async (motorcycleData, userId) => {
-    let motorcycle = new Motorcycle({...motorcycleData, creator: userId});
+const create = async (motorcycleData, username) => {
+    let user = await User.findOne({username});
+    console.log(user);
+
+    let motorcycle = new Motorcycle({...motorcycleData, creator: user._id});
     console.log(motorcycle);
-    let user = await User.findById(userId);
-    user.motorcycles.push(motorcycle);
-    user.save();
+
+    // if (!user.motorcycles) {
+    //     user.motorcycles = []
+    // } 
+    // user.motorcycles.push(motorcycle);
+    
+    // user.save();
 
     return motorcycle.save();
 };
@@ -40,6 +59,7 @@ const deleteOne = (motorcycleId) => {
 
 module.exports = {
     getAll,
+    getMyBikes,
     getUser,
     getOne,
     create,

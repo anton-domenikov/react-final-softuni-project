@@ -19,7 +19,7 @@ const login = async (username, password) => {
     if (!areEqual) throw { message: 'Invalid password!', status: 404 };
 
     let token = jwt.sign({_id: user._id, username: user.username}, SECRET);
-    return token;
+    return {token, user};
 };
 
 module.exports = {
