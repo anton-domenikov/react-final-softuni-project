@@ -17,21 +17,21 @@ const getUser = (id) => {
 
 const getOne = (id) => Motorcycle.findById(id);
 
-const create = async (motorcycleData) => {
-    let motorcycle = new Motorcycle(motorcycleData);
-
-    return motorcycle.save();
-};
-
-// const create = async (motorcycleData, userId) => {
-//     let motorcycle = new Motorcycle({...motorcycleData, creator: userId});
-//     console.log(motorcycle);
-//     let user = await User.findById(userId);
-//     user.motorcycles.push(motorcycle);
-//     user.save();
+// const create = async (motorcycleData) => {
+//     let motorcycle = new Motorcycle(motorcycleData);
 
 //     return motorcycle.save();
 // };
+
+const create = async (motorcycleData, userId) => {
+    let motorcycle = new Motorcycle({...motorcycleData, creator: userId});
+    console.log(motorcycle);
+    let user = await User.findById(userId);
+    user.motorcycles.push(motorcycle);
+    user.save();
+
+    return motorcycle.save();
+};
 
 const deleteOne = (motorcycleId) => {
     return Motorcycle.deleteOne({_id: motorcycleId});

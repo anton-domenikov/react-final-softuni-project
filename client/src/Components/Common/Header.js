@@ -1,7 +1,13 @@
-import { Link } from 'react-router-dom'
-import './Header.css'
+import { useContext } from 'react';
+import { UserContext } from '../UserPages/UserContext';
 
-const Header = () => {
+import { Link } from 'react-router-dom';
+import './Header.css';
+
+const Header = ({history}) => {
+    const { user, setUser } = useContext(UserContext);
+    // setUser('pesho')
+
     const onClickLogout = () => {
         fetch('http://localhost:4040/auth/logout',
             {
@@ -13,30 +19,46 @@ const Header = () => {
                 mode: 'cors',
                 credentials: 'include'
             })
+            .then(() => {
+                setUser(null);
+                // history.push('/login')
+            })
     }
 
-    return (
-        <>
-            <header id="header">
-                <h1>Suzuki</h1>
-                <h2>Welcome <span>profile!</span>!</h2>
-                <nav id="nav">
-                    <ul>
-                        <li><Link onClick={onClickLogout} to="/logout">Logout</Link></li>
-                    </ul>
-                </nav>
-                <nav id="nav">
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/motorcycles/create">Add Bike</Link></li>
-                        <li><Link to="/login">Login</Link></li>
-                        <li><Link to="/register">Register</Link></li>
-                    </ul>
-                </nav>
-            </header>
+    if (user) {
+        return (
+            <>
+                <header id="header">
+                    <h1>Suzuki</h1>
+                    <h2>Welcome <span>profile!</span>!</h2>
+                    <nav id="nav">
+                        <ul>
+                            <li><Link to="/motorcycles/create">Add Bike</Link></li>
+                            <li><Link onClick={onClickLogout} to="/logout">Logout {user}</Link></li>
+                        </ul>
+                    </nav>
+                </header>
 
-        </>
-    );
+            </>
+        );
+    } else {
+        return (
+            <>
+                <header id="header">
+                    <h1>Suzuki</h1>
+
+                    <nav id="nav">
+                        <ul>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/login">Login</Link></li>
+                            <li><Link to="/register">Register</Link></li>
+                        </ul>
+                    </nav>
+                </header>
+
+            </>
+        );
+    }
 };
 
 export default Header;

@@ -15,6 +15,10 @@ const userSchema = new mongoose.Schema({
         required: [true, 'password cannot be empty'],
         trim: true,
     },
+    motorcycles: {
+        type: mongoose.Types.ObjectId,
+        ref: 'Motorcycle',
+    }
 });
 
 userSchema.pre('save', function(next) {

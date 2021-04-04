@@ -1,6 +1,9 @@
 import './Create.css'
+import { useContext } from 'react';
+import { UserContext } from '../../UserPages/UserContext';
 
 const Create = ({history}) => {
+    const { user, setUser } = useContext(UserContext);
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -19,7 +22,7 @@ const Create = ({history}) => {
                     'Content-Type': 'application/json'
                 },
                 method: 'POST',
-                body: JSON.stringify(motorcycle)
+                body: JSON.stringify({motorcycle, user})
             })
             .then((res) => console.log(res))
             .then(() => history.push('/'))

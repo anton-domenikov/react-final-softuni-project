@@ -1,24 +1,19 @@
-import { Component } from 'react';
+import { useState, useContext } from 'react';
+import { UserContext } from '../UserPages/UserContext';
 import './Login.css'
 
-class Login extends Component {
-    constructor(props) {
-        super(props);
+const Login = ({history}) => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
-        this.state = {
-            username: '',
-            password: '',
-        }
+    const { user, setUser } = useContext(UserContext);
 
-        this.onChangeHandler = this.onChangeHandler.bind(this);
-    }
-
-    onSubmitHandler(e) {
+    const onSubmitHandler = (e) => {
         e.preventDefault();
 
         const logged = {
-            username: this.state.username,
-            password: this.state.password,
+            username,
+            password
         }
 
         console.log('Logged', logged);
@@ -38,44 +33,53 @@ class Login extends Component {
                 return res.json()
             })
             .then(data => {
+                setUser(username);
+                history.push('/')
                 console.log(data);
             })
     }
 
-    onChangeHandler(e) {
-        this.setState({ [e.target.name]: e.target.value });
+    const onUsernameChangeHandler = (e) => {
+        const usernameValue = e.target.value;
+        setUsername(usernameValue);
     }
 
-    render() {
-        return (
-            <section id="login">
-                <div className="login-form">
-                    <h1>Login</h1>
-
-                    <form onSubmit={this.onSubmitHandler.bind(this)} >
-                        <label htmlFor="username">Username</label>
-                        <input
-                            type="text"
-                            id="username"
-                            name="username"
-                            value={this.state.username}
-                            onChange={this.onChangeHandler}
-                        />
-                        <label htmlFor="password">Password</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            value={this.state.password}
-                            onChange={this.onChangeHandler}
-                        />
-
-                        <button>Submit</button>
-                    </form>
-                </div>
-            </section>
-        );
+    const onPasswordChangeHandler = (e) => {
+        const passwordValue = e.target.value;
+        setPassword(passwordValue);
+        console.log(password);
     }
+
+
+    return (
+        <section id="login">
+            <div className="login-form">
+                <h1>Login</h1>
+
+                <form onSubmit={onSubmitHandler} >
+                    <label htmlFor="username">Username</label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        value={username}
+                        onChange={onUsernameChangeHandler}
+                    />
+                    <label htmlFor="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        value={password}
+                        onChange={onPasswordChangeHandler}
+                    />
+
+                    <button>Submit</button>
+                </form>
+            </div>
+        </section>
+    );
+
 }
 
 

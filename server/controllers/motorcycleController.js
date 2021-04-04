@@ -16,6 +16,7 @@ router.get('/', (req, res, next) => {
 
 
 router.post('/create', (req, res, next) => {
+    console.log(req.body);
     let motorcycleData = extractMotorcycleData(req);
 
     // validation start
@@ -69,7 +70,7 @@ router.get('/delete/:motorcycleId', (req, res, next) => {
 });
 
 function extractMotorcycleData(req) {
-    let { model, year, displacement, imageURL } = req.body;
+    let { model, year, displacement, imageURL } = req.body.motorcycle;
 
     let motorcycleData = {
         model,
