@@ -1,12 +1,14 @@
 import { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
 import { UserContext } from '../UserPages/UserContext';
 
 import { Link } from 'react-router-dom';
 import './Header.css';
 
-const Header = ({history}) => {
+const Header = () => {
     const { user, setUser } = useContext(UserContext);
-    // setUser('pesho')
+    
+    let history = useHistory();
 
     const onClickLogout = () => {
         fetch('http://localhost:4040/auth/logout',
@@ -21,7 +23,7 @@ const Header = ({history}) => {
             })
             .then(() => {
                 setUser(null);
-                // history.push('/login')
+                history.push('/login')
             })
     }
 
