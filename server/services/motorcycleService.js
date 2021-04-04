@@ -52,6 +52,10 @@ const create = async (motorcycleData, username) => {
     return motorcycle.save();
 };
 
+function updateOne(bikeId, bikeData) {
+    return Motorcycle.updateOne({_id: bikeId}, bikeData);
+}
+
 const deleteOne = (motorcycleId) => {
     return Motorcycle.deleteOne({_id: motorcycleId});
 }
@@ -63,5 +67,6 @@ module.exports = {
     getUser,
     getOne,
     create,
+    updateOne,
     deleteOne,
 };

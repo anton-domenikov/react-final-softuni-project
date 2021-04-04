@@ -11,6 +11,8 @@ class Register extends Component {
             rePassword: '',
         }
 
+        this.history = props.history;
+
         this.onChangeHandler = this.onChangeHandler.bind(this);
     }
 
@@ -35,6 +37,7 @@ class Register extends Component {
                 body: JSON.stringify(registered)
             })
             .then(res => console.log(res))
+            .then(() => this.history.push('/login'))
     }
 
     // onUsernameChangeHandler(e) {

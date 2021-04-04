@@ -5,7 +5,12 @@ const MyBikesMotoCard = ({
     model,
     displacement,
     imageURL,
+    history
 }) => {
+    const deleteHandler = (e) => {
+        fetch(`http://localhost:4040/motorcycle/delete/${_id}`)
+            .then(() => history.push('/motorcycles/my-bikes'))
+    }
 
     return (
         <li className="otherMotorcycle">
@@ -15,7 +20,7 @@ const MyBikesMotoCard = ({
             <div className="motorcycle-info">
                 <Link to={`/motorcycles/edit/${_id}`}><button className="button">Edit</button></Link>
                 <Link to={`/motorcycles/details/${_id}`}><button className="button">Details</button></Link>
-                <Link to={`/motorcycles/delete/${_id}`}><button className="button">Delete</button></Link>
+                <Link to={`/motorcycles/delete/${_id}`}><button onClick={deleteHandler} className="button">Delete</button></Link>
             </div>
         </li>
     );

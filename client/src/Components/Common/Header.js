@@ -30,14 +30,14 @@ const Header = ({history}) => {
         return (
             <>
                 <header id="header">
-                    <h1>Suzuki</h1>
-                    <h2>Welcome <span>{currentUser}!</span>!</h2>
+                    <h1>World of Suzuki</h1>
+                    <h2>Welcome, <span>{currentUser}</span>!</h2>
                     <nav id="nav">
                         <ul>
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/motorcycles/create">Add Bike</Link></li>
                             <li><Link to="/motorcycles/my-bikes">My Bikes</Link></li>
-                            <li><Link onClick={onClickLogout} to="/logout">Logout {currentUser}</Link></li>
+                            <li><Link onClick={onClickLogout} to="/logout">Logout, {currentUser}</Link></li>
                         </ul>
                     </nav>
                 </header>
@@ -48,7 +48,7 @@ const Header = ({history}) => {
         return (
             <>
                 <header id="header">
-                    <h1>Suzuki</h1>
+                    <h1>World of Suzuki</h1>
 
                     <nav id="nav">
                         <ul>

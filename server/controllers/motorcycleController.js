@@ -70,8 +70,16 @@ router.post('/create', (req, res, next) => {
 });
 
 
-router.get('/edit/:motorcycleId', (req, res, next) => {
+router.get('/one-bike/:motorcycleId', (req, res, next) => {
     motorcycleService.getOne(req.params.motorcycleId)
+        .then(motorcycle => {
+            res.send(motorcycle);
+        })
+        .catch(next);
+});
+
+router.post('/one-bike/:motorcycleId', (req, res, next) => {
+    motorcycleService.updateOne(req.params.motorcycleId, req.body)
         .then(motorcycle => {
             res.send(motorcycle);
         })
@@ -80,7 +88,7 @@ router.get('/edit/:motorcycleId', (req, res, next) => {
 
 router.get('/delete/:motorcycleId', (req, res, next) => {
     motorcycleService.deleteOne(req.params.motorcycleId)
-        .then(() => res.redirect('/'))
+        .then(() => res.send())
         .catch(next);
 });
 
