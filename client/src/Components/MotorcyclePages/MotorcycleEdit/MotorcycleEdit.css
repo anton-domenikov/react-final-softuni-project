@@ -1,0 +1,60 @@
+#edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-size: cover;
+    background-position: 100%;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 60px 30px;
+    background: #fff;
+    margin-top: 80px;
+    transition: transform 0.5s;
+    border-radius: 5px;
+}
+
+.edit-form label {
+    margin: 10px 0;
+}
+
+.edit-form h1 {
+    margin-bottom: 30px;
+    font-size: 40px;
+    padding: 10px 50px;
+}
+
+#edit form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+#edit input {
+    font-size: 18px;
+    padding: 11px 20px;
+    outline: none;
+    border: none;
+    background: rgb(230, 230, 230);
+    border-radius: 5px;
+    width: 300px;
+}
+
+#edit button {
+    font-size: 18px;
+    padding: 12px 10px;
+    border: none;
+    background: #146ab1da;
+    color: #fff;
+    margin-top: 30px;
+}
+
+#edit button:hover {
+    cursor: pointer;
+}

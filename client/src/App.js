@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import { UserContext } from './Components/UserPages/UserContext';
 import { Register, Login } from './Components/UserPages';
 import { Header } from './Components/Common';
-import { Dashboard, Create, MyBikes, MotorcycleDetails } from './Components/MotorcyclePages';
+import { Dashboard, Create, MyBikes, MotorcycleDetails, MotorcycleEdit } from './Components/MotorcyclePages';
 
 function App() {
     const [user, setUser] = useState(null);
@@ -23,6 +23,7 @@ function App() {
                     <Route path="/motorcycles/create" component={Create} ></Route>
                     <Route path="/motorcycles/my-bikes" component={MyBikes} ></Route>
                     <Route path="/motorcycles/details/:bikeId" component={MotorcycleDetails} ></Route>
+                    <Route path="/motorcycles/edit/:bikeId" component={MotorcycleEdit} ></Route>
                 </Switch>
             </UserContext.Provider>
         </div>

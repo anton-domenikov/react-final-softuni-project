@@ -29,11 +29,6 @@ const getUser = (id) => {
 
 const getOne = (id) => Motorcycle.findById(id);
 
-// const create = async (motorcycleData) => {
-//     let motorcycle = new Motorcycle(motorcycleData);
-
-//     return motorcycle.save();
-// };
 
 const create = async (motorcycleData, username) => {
     let user = await User.findOne({username});
