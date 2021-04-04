@@ -22,7 +22,7 @@ function App() {
                     <Route path="/login" component={Login} ></Route>
                     <Route path="/motorcycles/create" component={Create} ></Route>
                     <Route path="/motorcycles/my-bikes" component={MyBikes} ></Route>
-                    <Route path="/motorcycles/details:bikeId" component={MotorcycleDetails} ></Route>
+                    <Route path="/motorcycles/details/:bikeId" component={MotorcycleDetails} ></Route>
                 </Switch>
             </UserContext.Provider>
         </div>
